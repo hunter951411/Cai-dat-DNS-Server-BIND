@@ -32,22 +32,20 @@ www IN A 1.2.3.4
 
 + Bảng ghi bí danh(Alias Records)(còn gọi là bản ghi CNAME) từ một đi một bảng ghi địa chỉ. Bạn có thể tạo một bản ghi CNAME chỉ vào bảng ghi CNAME khác. Tuy nhiên, nó tăng gấp đôi số lượng các yêu cầu đến máy chủ DNS, do đó cách làm này là một cách không hiệu quả.
 
-mail IN CNAME www
-www IN A 1.2.3.4
+  mail IN CNAME www
+  www IN A 1.2.3.4
 
 + Bảng ghi trao đổi mail(Mail Exchange Records)( còn gọi là MX records) dùng để định nghĩa nơi mà mà mail gửi tới và gửi tới theo thứ tự như thế nào. Bảng ghi này nhất định phải gắn vào bảng ghi địa chỉ, không gắn vào bảng ghi CNAME. Sẽ tồn tại nhiều bảng ghi này nếu như có nhiều mày chủ cùng phụ trách nhận mail cho một tên miền.
 
-IN MX 10 mail.example.com.
+  IN MX 10 mail.example.com.
 
-
-
-mail IN A 1.2.3.4
+  mail IN A 1.2.3.4
 
 + Bảng ghi máy chủ tên(Name Server Records): Dùng định nghĩa máy chủ phục vụ bảng copy của các bản ghi. Bảng ghi củng phải gắn vào một bảng ghi địa chỉ, không sử dụng bảng ghi CNAME.
 
-IN NS ns.example.com.
+  IN NS ns.example.com.
 
-ns IN A 1.2.3.4
+  ns IN A 1.2.3.4
 
 
 #2. Cài đặt máy chủ Master DNS
@@ -109,17 +107,7 @@ Sau mỗi lần thay đổi nội dung cần khởi động lại bind9
 
   **sudo /etc/init.d/bind9 restart**
 
-- Để kiểm tra lại thông tin server DNS có được cấu hình một các đúng đắn có thể dùng lệnh dig nhưng trước đó cần cấu hình để máy kiểm tra đó sử dụng DNS server của chúng ta( Ví dụ: máy server DNS mà chúng ta cái đặt có IP là 192.168.1.101). Để cấu hình DNS ta dùng lệnh:
-
-**sudo nm-connection-editor**
-
-<img src="">
-
-- Và chọn vào card mạng cần thiết lập DNS và chọn Edit
-
-<img src="">
-
-- Chọn vào tab “IPv4 Settings”, method chọn “Automatic (DHCP) addresses only” vì chúng ta chỉ muốn thay đổi DNS server thôi, DNS servers gõ vào ip của máy DNS server( 10.0.0.1).
+- Để kiểm tra lại thông tin server DNS có được cấu hình một các đúng đắn có thể dùng lệnh dig nhưng trước đó cần cấu hình để máy kiểm tra đó sử dụng DNS server của chúng ta( Ví dụ: máy server DNS mà chúng ta cái đặt có IP là 192.168.1.101). 
 
 - Sau khi đã khởi động lại bind9 và cấu hình DNS server cho card mạng, chúng ta kiểm tra lại cấu hình thông qua lệnh dig
 
