@@ -2,12 +2,20 @@
 
 - Việc cấu hình máy chủ Slave DNS sẽ giống như máy chủ Master DNS, chỉ một điểm khác biệt trên máy chủ Master DNS phải thêm tham số allow-transfer vào trong tập tin /etc/bind/named.conf.local
 
-<img src="http://prntscr.com/8vvjk3">
+                        zone "example.com" {
+                        type master;
+                        file "/etc/bind/db.example.com";
+                        allow-transfer { 192.168.56.102; };
+                        };
 
 - Trong đó: 10.0.0.2 sẽ là IP của máy chủ Slave DNS.
 Máy chủ Slave DNS cũng cần phải thêm tham số masters vào trong tập tin /etc/bind/named.conf.local
 
-   <img src="http://prntscr.com/8vvjqr">
+                          zone "example.com" {
+                        type slave;
+                        file "/var/cache/bind/db.example.com";
+                        masters { 192.168.56.103; };
+                        };
 
 - Trong đó: 10.0.0.1 sẽ là IP của máy chủ Master DNS.
 
@@ -19,13 +27,17 @@ Máy chủ Slave DNS cũng cần phải thêm tham số masters vào trong tập
 
 - Chúng ta sẽ thu được ip của nhà cung cấp dịch vụ DNS
 
-<img src="http://prntscr.com/8vvjwl">
+                        nameserver 10.195.1.2
+                        nameserver 10.195.1.4
 
 - Ngoài dử dụng máy chủ DNS của nhà cung cấp chúng ta có thể sử dung máy chủ DNS của google qua hai IP là: 8.8.8.8,8.8.4.4
 Giờ để cấu hình máy chủ DNS cache cần gỡ bỏ các ghi chú và chỉnh sử nội dung tập tin /etc/bind/named.conf.options như sau:
 
 
-<img src="http://prntscr.com/8vvk2k">
+                        forwarders {
+                        10.195.1.2;
+                        10.195.1.4;
+                        };
 
 
 - Trong đó 10.195.1.2, 10.195.1.4 là hai máy chủ DNS của nhà cung cấp.
