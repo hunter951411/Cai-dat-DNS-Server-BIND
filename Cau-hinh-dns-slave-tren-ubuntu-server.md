@@ -11,11 +11,11 @@ allow-transfer { 10.0.0.2; };
 - Trong đó: 10.0.0.2 sẽ là IP của máy chủ Slave DNS.
 Máy chủ Slave DNS cũng cần phải thêm tham số masters vào trong tập tin /etc/bind/named.conf.local
 
-zone "hunter.com" {
-type slave;
-file "/var/cache/bind/db.hunter.com";
-masters { 10.0.0.1; };
-};
+   zone "hunter.com" {
+   type slave;
+   file "/var/cache/bind/db.hunter.com";
+   masters { 10.0.0.1; };
+   };
 
 - Trong đó: 10.0.0.1 sẽ là IP của máy chủ Master DNS.
 
