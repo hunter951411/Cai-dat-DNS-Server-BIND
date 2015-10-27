@@ -1,45 +1,37 @@
-Cài đặt máy chủ Slave DNS
-Việc cấu hình máy chủ Slave DNS sẽ giống như máy chủ Master DNS, chỉ một điểm khác biệt trên máy chủ Master DNS phải thêm tham số allow-transfer vào trong tập tin /etc/bind/named.conf.local
-Mã:
-[...]
+#1. Cài đặt máy chủ Slave DNS
 
-zone "example.com" {
+- Việc cấu hình máy chủ Slave DNS sẽ giống như máy chủ Master DNS, chỉ một điểm khác biệt trên máy chủ Master DNS phải thêm tham số allow-transfer vào trong tập tin /etc/bind/named.conf.local
+
+zone "hunter.com" {
 type master;
-file "/etc/bind/db.example.com";
-allow-transfer { 192.168.56.102; };
+file "/etc/bind/db.hunter.com";
+allow-transfer { 10.0.0.2; };
 };
 
-[...]
-
-Trong đó: 192.168.56.102 sẽ là IP của máy chủ Slave DNS.
+- Trong đó: 10.0.0.2 sẽ là IP của máy chủ Slave DNS.
 Máy chủ Slave DNS cũng cần phải thêm tham số masters vào trong tập tin /etc/bind/named.conf.local
-Mã:
-[...]
 
-zone "example.com" {
+zone "hunter.com" {
 type slave;
-file "/var/cache/bind/db.example.com";
-masters { 192.168.56.103; };
+file "/var/cache/bind/db.hunter.com";
+masters { 10.0.0.1; };
 };
-[...]
 
-Trong đó: 192.168.56.103 sẽ là IP của máy chủ Master DNS.
-Cài đặt máy chủ Caching DNS
-Cấu hình máy chủ DNS cache rất đơn giản chỉ là việc địa chỉ máy chủ DNS của nhà cung cấp dịch vụ(ISP's DNS servers). Để tìm máy chủ DNS của các nhà cung cấp dịch vụ chúng ta chỉ cần đơn giản sử dụng lệch cat để xem nội dung tập tin /etc/resolv.conf.
-Mã:
-cat /etc/resolv.conf
+- Trong đó: 10.0.0.1 sẽ là IP của máy chủ Master DNS.
 
-Chúng ta sẽ thu được ip của nhà cung cấp dịch vụ DNS
+##Cài đặt máy chủ Caching DNS
 
+- Cấu hình máy chủ DNS cache rất đơn giản chỉ là việc địa chỉ máy chủ DNS của nhà cung cấp dịch vụ(ISP's DNS servers). Để tìm máy chủ DNS của các nhà cung cấp dịch vụ chúng ta chỉ cần đơn giản sử dụng lệch cat để xem nội dung tập tin /etc/resolv.conf.
 
-Mã:
+  **cat /etc/resolv.conf**
+
+- Chúng ta sẽ thu được ip của nhà cung cấp dịch vụ DNS
+
 nameserver 10.195.1.2
 nameserver 10.195.1.4
 
-Ngoài dử dụng máy chủ DNS của nhà cung cấp chúng ta có thể sử dung máy chủ DNS của google qua hai IP là: 8.8.8.8,8.8.4.4
+- Ngoài dử dụng máy chủ DNS của nhà cung cấp chúng ta có thể sử dung máy chủ DNS của google qua hai IP là: 8.8.8.8,8.8.4.4
 Giờ để cấu hình máy chủ DNS cache cần gỡ bỏ các ghi chú và chỉnh sử nội dung tập tin /etc/bind/named.conf.options như sau:
-Mã:
-[...]
 
 
 forwarders {
@@ -48,16 +40,15 @@ forwarders {
 };
 
 
-[...]
+- Trong đó 10.195.1.2, 10.195.1.4 là hai máy chủ DNS của nhà cung cấp.
 
-Trong đó 10.195.1.2, 10.195.1.4 là hai máy chủ DNS của nhà cung cấp.
-Sau đó khởi động lại ứng dung bind
-Mã:
-sudo /etc/init.d/bind9 restart
+- Sau đó khởi động lại ứng dung bind
 
-Để kiểm tra tính hoạt động của máy chủ DNS cache chúng ta dùng lệnh dig trong gói dnsutils hai lần và so sánh kết quả
+**sudo /etc/init.d/bind9 restart**
+
+- Để kiểm tra tính hoạt động của máy chủ DNS cache chúng ta dùng lệnh dig trong gói dnsutils hai lần và so sánh kết quả
 Kết quả lần thứ nhất
-Mã:
+
 ; <<>> DiG 9.7.0-P1 <<>> google.com
 ;; global options: +cmd
 ;; Got answer:
@@ -105,7 +96,6 @@ m.root-servers.net. 39852 IN A 202.12.27.33
 Kết quả lần thứ 2
 dig google.com
 
-Mã:
 ; <<>> DiG 9.7.0-P1 <<>> google.com
 ;; global options: +cmd
 ;; Got answer:
