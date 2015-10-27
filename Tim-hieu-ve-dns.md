@@ -47,11 +47,6 @@
 
 - Các top-level domain :
 
-<img src="http://vnbeggar.info/vip/sangnt/Pictures/table%20DNS%20top%20level%20domain.png">
-
-
-- Vì sự quá tải của các domain name đã tồn tại, do đó đã làm phát sinh những top-level domain mới. Bảng sau đây liệt kê các top-level domain mới
-
-<img src="http://vnbeggar.info/vip/sangnt/Pictures/table%20DNS%20top%20level%20domain%202.png">
+<img src="https://www.tppwholesale.com.au/ee/images/uploads/nr_domain_names_admin_4_10.gif">
 
 - Bên cạnh đó, mỗi quốc gia cũng có top-level domain. Bảng sau sẽ liệt kê 1 số top-level domain của 1 số quốc gia trên thế giới.
