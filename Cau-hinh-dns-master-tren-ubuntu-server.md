@@ -5,15 +5,15 @@
 
 **sudo apt-get install bind9**
 
-<img src="http://prntscr.com/8vuz23">
+<img src="http://i.imgur.com/gnb2MxE.png">
 
 Sau đó chọn Y để tiếp tục cài đặt.
 
-<img src="http://prntscr.com/8vuzb9">
+<img src="http://i.imgur.com/Cbqhufc.png">
 
 Ubuntu sẽ tiếp hàng tải các gói cần thiết cho cài đặt và cài đặt vào máy. Sau khi cài đặt thành công vào máy sẽ có thông báo như sau:
 
-<img src="http://prntscr.com/8vuzox">
+<img src="http://i.imgur.com/VYD3jdj.png">
 
 
 #2. Các dịch vụ của BIND9 và một vài khái niệm
@@ -111,7 +111,7 @@ Sau mỗi lần thay đổi nội dung cần khởi động lại bind9
 
 - Sau khi đã khởi động lại bind9 và cấu hình DNS server cho card mạng, chúng ta kiểm tra lại cấu hình thông qua lệnh dig
 
-<img src="http://prntscr.com/8vvc7f">
+<img src="">
 
 - Như trong hình địa chỉ hunter.com nay đã được hiểu là IP 10.0.0.1
 Để cấu hình www.hunter.com thành IP 10.0.0.2 thì cần thêm khai báo www( bảng ghi địa chỉ) trong tập tin db.example.com
@@ -120,7 +120,7 @@ www IN A 192.168.56.102
 
 - Sau khi thay đổi xong khởi động lại bind9 và kiểm tra lai bằng lệnh dig
 
-<img src="http://prntscr.com/8vvd9p">
+<img src="http://i.imgur.com/RZ2tNFx.png">
 
 - Trong hình trên kết quả là www.hunter.com đã hiểu như là IP 10.0.0.2
 
@@ -131,5 +131,5 @@ mail IN A 10.0.0.3
 
 - Dòng đầu trong cấu hình trên cho biết là địa chỉ mail.example.com sẽ được dùng để trao đổi email, dòng thứ hai cho biết địa chỉ IP của mail.example.com là 192.168.56.103. Khởi động lại bind9 và kiểm tra lai bằng lệnh dig
 
-<img src="http://prntscr.com/8vvdy5">
+<img src="http://i.imgur.com/le2Y6eo.png">
 
