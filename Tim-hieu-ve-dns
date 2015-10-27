@@ -1,4 +1,7 @@
-1. Giới thiệu DNS :
+
+
+
+#Giới thiệu DNS :
 
 - Mỗi máy tính trong mạng muốn liên lạc hay trao đổi thông tin, dữ liệu cho nhau cần phải biết rõ địa chỉ IP của nhau. Nếu số lượng máy tính trong mạng nhiều thì việc nhớ những IP này là rất khó khăn.
 
