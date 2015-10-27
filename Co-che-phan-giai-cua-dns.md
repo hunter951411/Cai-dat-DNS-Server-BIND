@@ -102,3 +102,4 @@
 
 - Giá trị TTL này có thể được thay đổi bởi người quản trị trong việc khai báo TTL cho dữ liệu đó.
 
+Nguồn svuit.com
