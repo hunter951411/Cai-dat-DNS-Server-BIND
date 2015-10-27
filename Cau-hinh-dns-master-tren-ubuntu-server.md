@@ -111,7 +111,7 @@ Sau mỗi lần thay đổi nội dung cần khởi động lại bind9
 
 - Sau khi đã khởi động lại bind9 và cấu hình DNS server cho card mạng, chúng ta kiểm tra lại cấu hình thông qua lệnh dig
 
-<img src="">
+<img src="http://i.imgur.com/epZ7IRo.png">
 
 - Như trong hình địa chỉ hunter.com nay đã được hiểu là IP 10.0.0.1
 Để cấu hình www.hunter.com thành IP 10.0.0.2 thì cần thêm khai báo www( bảng ghi địa chỉ) trong tập tin db.example.com
