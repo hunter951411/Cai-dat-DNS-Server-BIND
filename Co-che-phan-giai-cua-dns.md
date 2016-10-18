@@ -5,11 +5,11 @@
 
 - Đầu tiên khi Resolver(web browser) gõ http://hunter.com và enter
 
-- Trình duyệt web sẽ gọi hàm windows sockets hoặc gethostbyname() hay getaddinfor() để yêu cầu phân giải svuit.com thành IP.
+- Trình duyệt web sẽ gọi hàm windows sockets hoặc gethostbyname() hay getaddinfor() để yêu cầu phân giải h.com thành IP.
 
-- Client sẽ tìm trong cache DNS của client: Tên svuit.com có thể được lưu lại từ những truy cập trước đó hay trong file host.txt của client xem cái máy có tên hunter.com có IP là bao nhiêu? . Nếu có nó sẽ sử dụng IP này để truy cập
+- Client sẽ tìm trong cache DNS của client: Tên h.com có thể được lưu lại từ những truy cập trước đó hay trong file host.txt của client xem cái máy có tên hunter.com có IP là bao nhiêu? . Nếu có nó sẽ sử dụng IP này để truy cập
 
-- Ví dụ: Bạn có thể vào file host.txt của bạn và thêm dòng . Khi đó bạn vào trình duyệt web của bạn gõ svuit.com. Nó sẽ ra trang google.com.
+- Ví dụ: Bạn có thể vào file host.txt của bạn và thêm dòng . Khi đó bạn vào trình duyệt web của bạn gõ h.com. Nó sẽ ra trang google.com.
 
   **74.125.132.101 hunter.com.**
 
